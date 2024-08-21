@@ -407,6 +407,16 @@ The <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> tile is availab
 
 <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> includes the following breaking changes:
 
+### <a id="routing-api-tls"></a>Routing API defaults to TLS only Endpoints
+
+When apps running on <%= vars.windows_runtime_abbr %> v6.0 Diego Cells use TCP routes,
+operators cannot upgrade the platform from <%= var.app_runtime_abbr %> v6.0 or later to <%= var.app_runtime_abbr %> v7.0 until one of the following occurs:
+
+1. All Windows Diego Cells are upgraded to version 6.0.8 or later
+2. When deploying <%= var.app_runtime_abbr %> v7.0, the "Routing API Endpoint Protocol" is set to "HTTPS and plain HTTP" until all Isolated + Windows Diego Cells are upgraded to v7.0. After this, <%= var.app_runtime_abbr %> can be re-deployed to switch Routing API back to "HTTPS only."
+
+<strong>Failure to do at least one of the above steps will result in downtime for Isolated + Windows apps using TCP routes.</strong>
+
 ## <a id='known-issues'></a> Known issues
 
 There are no known issues for <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %>.
